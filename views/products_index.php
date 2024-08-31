@@ -16,4 +16,4 @@
 <?php endforeach; ?>
 
 </body>
-</html><?php
+</html>

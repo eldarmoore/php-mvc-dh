@@ -10,6 +10,6 @@ class Products
 
         $products = $model->getData();
 
-        require "view.php";
+        require "views/products_index.php";
     }
 }
