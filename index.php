@@ -26,7 +26,6 @@ $controller = $params["controller"];
 $action = $params["action"];
 
 // Require and instantiate the controller
-require "src/controllers/$controller.php";
 $controller_object = new $controller();
 
 // Call the action method on the controller object
