@@ -14,6 +14,11 @@ $router->add("/", ["controller" => "home", "action" => "index"]);
 // Match the current path to a route
 $params = $router->match($path);
 
+// If no route matches, display a 404 message
+if ($params === false) {
+    exit("404 Not Found");
+}
+
 // Get the controller and action from the matched route
 $controller = $params["controller"];
 $action = $params["action"];
