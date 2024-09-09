@@ -22,8 +22,8 @@ if ($params === false) {
 }
 
 // Get the controller and action from the matched route
-$controller = $params["controller"];
 $action = $params["action"];
+$controller = "App\Controllers\\" . ucwords($params["controller"]);
 
 // Require and instantiate the controller
 $controller_object = new $controller();
