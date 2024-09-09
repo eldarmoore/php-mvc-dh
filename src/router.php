@@ -12,4 +12,15 @@ class Router
             "params" => $params
         ];
     }
+
+    // Match the requested URL path to the routing table
+    public function match(string $path): array|bool
+    {
+        foreach ($this->routes as $route) {
+            if ($route["path"] === $path) {
+                return $route["params"];
+            }
+        }
+        return false;
+    }
 }

@@ -11,12 +11,19 @@ $router->add("/home/index", ["controller" => "home", "action" => "index"]);
 $router->add("/products", ["controller" => "products", "action" => "index"]);
 $router->add("/", ["controller" => "home", "action" => "index"]);
 
-// Split the URL into segments
+// Match the current path to a route
+$params = $router->match($path);
+
+// For testing, print the matched parameters and exit
+var_dump($params);
+exit;
+
+// If matched, proceed with extracting controller and action
 $segments = explode('/', $path);
 
 // Get the controller and action from the URL
-$controller = $segments[1];
 $action = $segments[2];
+$controller = $segments[1];
 
 // Require and instantiate the controller
 require "src/controllers/$controller.php";
