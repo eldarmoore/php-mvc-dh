@@ -2,6 +2,10 @@
 
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
+require 'src/router.php';
+
+$router = new Router();
+
 $segments = explode('/', $path);
 
 $action = $segments[2];
