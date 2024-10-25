@@ -18,9 +18,10 @@ class Router
     // Match the requested URL path to the routing table
     public function match(string $path): array|bool
     {
-        $pattern = "#^/[a-z]+/[a-z]+$#";
+        $pattern = "#^/([a-z]+)/([a-z]+)$#";
 
         if (preg_match($pattern, $path, $matches)) {
+            print_r($matches);
             exit("Match");
         }
 
