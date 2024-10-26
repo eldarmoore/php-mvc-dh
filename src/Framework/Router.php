@@ -21,7 +21,9 @@ class Router
         foreach ($this->routes as $route) {
             $pattern = "#^/(?<controller>[a-z]+)/(?<action>[a-z]+)$#";
 
-            echo $pattern, "\n", $route["path"], "\n", $route["params"];
+            echo $pattern, "\n", $route["path"], "\n";
+
+            $this->getPatternFromRoutePath($route["path"]);
 
             if (preg_match($pattern, $path, $matches)) {
                 print_r($matches['action']);
@@ -31,5 +33,20 @@ class Router
         }
 
         return false;
+    }
+
+    private function getPatternFromRoutePath(string $route_path)
+    {
+        $route_path = trim($route_path, "/");
+
+        $segments = explode("/", $route_path);
+
+        $segments = array_map(function (string $segment): string {
+
+            return $segment;
+
+        }, $segments);
+
+        print_r($segments);
     }
 }
