@@ -18,12 +18,11 @@ class Router
     // Match the requested URL path to the routing table
     public function match(string $path): array|bool
     {
+        $path = trim($path, "/");
+
         foreach ($this->routes as $route) {
-            $pattern = "#^/(?<controller>[a-z]+)/(?<action>[a-z]+)$#";
 
-            echo $pattern, "\n", $route["path"], "\n";
-
-            $this->getPatternFromRoutePath($route["path"]);
+            $pattern = $this->getPatternFromRoutePath($route["path"]);
 
             if (preg_match($pattern, $path, $matches)) {
                 print_r($matches['action']);
@@ -35,7 +34,7 @@ class Router
         return false;
     }
 
-    private function getPatternFromRoutePath(string $route_path)
+    private function getPatternFromRoutePath(string $route_path): string
     {
         $route_path = trim($route_path, "/");
 
@@ -51,8 +50,6 @@ class Router
 
         }, $segments);
 
-        $pattern = "#^" . implode("/", $segments) . "$#";
-
-        echo $pattern, "\n";
+        return "#^" . implode("/", $segments) . "$#";
     }
 }
