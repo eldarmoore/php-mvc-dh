@@ -9,9 +9,10 @@ spl_autoload_register(function (string $class_name) {
 $router = new \Framework\Router();
 
 // Add routes to the routing table
-$router->add("/home/index", ["controller" => "home", "action" => "index"]);
-$router->add("/products", ["controller" => "products", "action" => "index"]);
-$router->add("/", ["controller" => "home", "action" => "index"]);
+$router->add("/{controller}/{action}");
+//$router->add("/home/index", ["controller" => "home", "action" => "index"]);
+//$router->add("/products", ["controller" => "products", "action" => "index"]);
+//$router->add("/", ["controller" => "home", "action" => "index"]);
 
 // Match the current path to a route
 $params = $router->match($path);

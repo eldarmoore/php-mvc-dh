@@ -7,7 +7,7 @@ class Router
     private array $routes = [];
 
     // Add a route to the routing table
-    public function add(string $path, array $params): void
+    public function add(string $path, array $params = []): void
     {
         $this->routes[] = [
             "path" => $path,
@@ -18,18 +18,18 @@ class Router
     // Match the requested URL path to the routing table
     public function match(string $path): array|bool
     {
-        $pattern = "#^/(?<controller>[a-z]+)/(?<action>[a-z]+)$#";
-
-        if (preg_match($pattern, $path, $matches)) {
-            print_r($matches);
-            exit("Match");
-        }
-
         foreach ($this->routes as $route) {
-            if ($route["path"] === $path) {
-                return $route["params"];
+            $pattern = "#^/(?<controller>[a-z]+)/(?<action>[a-z]+)$#";
+
+            echo $pattern, "\n", $route["path"], "\n", $route["params"];
+
+            if (preg_match($pattern, $path, $matches)) {
+                print_r($matches['action']);
+                $matches = array_filter($matches, "is_string", ARRAY_FILTER_USE_KEY);
+                return $matches;
             }
         }
+
         return false;
     }
 }
