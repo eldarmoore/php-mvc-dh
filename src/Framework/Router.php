@@ -61,6 +61,6 @@ class Router
 
         }, $segments);
 
-        return "#^" . implode("/", $segments) . "$#";
+        return "#^" . implode("/", $segments) . "$#i";
     }
 }
