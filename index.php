@@ -16,22 +16,6 @@ $router->add("/products", ["controller" => "products", "action" => "index"]);
 $router->add("/", ["controller" => "home", "action" => "index"]);
 $router->add("/{controller}/{action}");
 
-// Match the current path to a route
-$params = $router->match($path);
-
-// If no route matches, display a 404 message
-if ($params === false) {
-    exit("404 Not Found");
-}
-
-// Get the controller and action from the matched route
-$action = $params["action"];
-$controller = "App\Controllers\\" . ucwords($params["controller"]);
-
-// Require and instantiate the controller
-$controller_object = new $controller();
-
-// Call the action method on the controller object
-$controller_object->$action();
-
 $dispatcher = new \Framework\Dispatcher($router);
+
+$dispatcher->handle($path);
