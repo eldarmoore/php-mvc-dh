@@ -47,7 +47,13 @@ class Router
 
             if (preg_match("#^\{([a-z][a-z0-9]*)\}$#", $segment, $matches)) {
 
-                $segment = "(?<" . $matches[1] . ">[^/]*)";
+                return "(?<" . $matches[1] . ">[^/]*)";
+
+            }
+
+            if (preg_match("#^\{([a-z][a-z0-9]*):(.+)\}$#", $segment, $matches)) {
+
+                return "(?<" . $matches[1] . ">" . $matches[2] . ")";
 
             }
 

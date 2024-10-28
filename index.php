@@ -10,7 +10,7 @@ $router = new \Framework\Router();
 
 // Add routes to the routing table
 $router->add("/{controller}/{action}");
-$router->add("/{controller}/{id}/{action}");
+$router->add("/{controller}/{id:\d+}/{action}");
 $router->add("/home/index", ["controller" => "home", "action" => "index"]);
 $router->add("/products", ["controller" => "products", "action" => "index"]);
 $router->add("/", ["controller" => "home", "action" => "index"]);
