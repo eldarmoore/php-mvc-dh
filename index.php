@@ -33,3 +33,5 @@ $controller_object = new $controller();
 
 // Call the action method on the controller object
 $controller_object->$action();
+
+$dispatcher = new \Framework\Dispatcher($router);

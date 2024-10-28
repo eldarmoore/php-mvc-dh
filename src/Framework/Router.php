@@ -20,8 +20,6 @@ class Router
     {
         $path = urldecode($path);
 
-        var_dump($path);
-
         $path = trim($path, "/");
 
         foreach ($this->routes as $route) {
