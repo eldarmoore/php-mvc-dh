@@ -26,6 +26,6 @@ class Dispatcher
         $controller_object = new $controller();
 
         // Call the action method on the controller object
-        $controller_object->$action();
+        $controller_object->$action($params["id"]);
     }
 }
