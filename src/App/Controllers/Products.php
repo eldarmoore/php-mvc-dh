@@ -18,7 +18,12 @@ class Products
     public function show(string $id)
     {
         var_dump($id);
-        
+
         require "views/products_show.php";
+    }
+
+    public function showPage(string $title, string $id, string $page)
+    {
+
     }
 }

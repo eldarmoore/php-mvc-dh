@@ -27,13 +27,13 @@ class Dispatcher
         // Require and instantiate the controller
         $controller_object = new $controller();
 
-        $this->getActionArguments($controller, $action);
+        $this->getActionArguments($controller, $action, $params);
 
         // Call the action method on the controller object
         $controller_object->$action();
     }
 
-    private function getActionArguments(string $controller, string $action)
+    private function getActionArguments(string $controller, string $action, array $params)
     {
         $methods = new ReflectionMethod($controller, $action);
 
@@ -41,7 +41,7 @@ class Dispatcher
 
             $name = $parameter->getName();
 
-            echo $name . " ";
+            echo $name, " = ", $params[$name], " ";
         }
     }
 }

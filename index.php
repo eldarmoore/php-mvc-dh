@@ -9,6 +9,7 @@ spl_autoload_register(function (string $class_name) {
 $router = new \Framework\Router();
 
 // Add routes to the routing table
+$router->add("/{title}/{id:\d+}/{page:\d+}", ["controller" => "products", "action" => "showPage"]);
 $router->add("/product/{slug:[\w-]+}", ["controller" => "products", "action" => "show"]);
 $router->add("/{controller}/{id:\d+}/{action}");
 $router->add("/home/index", ["controller" => "home", "action" => "index"]);
