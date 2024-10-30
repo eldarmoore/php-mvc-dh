@@ -2,6 +2,8 @@
 
 namespace Framework;
 
+use ReflectionMethod;
+
 class Dispatcher
 {
     public function __construct(private Router $router)
@@ -25,7 +27,21 @@ class Dispatcher
         // Require and instantiate the controller
         $controller_object = new $controller();
 
+        $this->getActionArguments($controller, $action);
+
         // Call the action method on the controller object
-        $controller_object->$action($params["id"]);
+        $controller_object->$action();
+    }
+
+    private function getActionArguments(string $controller, string $action)
+    {
+        $methods = new ReflectionMethod($controller, $action);
+
+        foreach ($methods->getParameters() as $parameter) {
+
+            $name = $parameter->getName();
+
+            echo $name . " ";
+        }
     }
 }
