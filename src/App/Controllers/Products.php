@@ -15,7 +15,8 @@ class Products
 
         $viewer = new Viewer();
 
-        require "views/products_index.php";
+        $viewer->render("products_index.php", $products);
+
     }
 
     public function show(string $id)
