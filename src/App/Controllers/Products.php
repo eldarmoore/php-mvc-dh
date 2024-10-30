@@ -15,7 +15,9 @@ class Products
 
         $viewer = new Viewer();
 
-        $viewer->render("products_index.php", $products);
+        $viewer->render("products_index.php", [
+            "products" => $products
+        ]);
 
     }
 
