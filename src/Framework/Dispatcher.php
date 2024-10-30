@@ -22,7 +22,9 @@ class Dispatcher
 
         // Get the controller and action from the matched route
         $action = $params["action"];
-        $controller = "App\Controllers\\" . ucwords($params["controller"]);
+        $controller = $this->getControllerName($params);
+
+        exit($controller);
 
         // Require and instantiate the controller
         $controller_object = new $controller();
@@ -47,5 +49,16 @@ class Dispatcher
         }
 
         return $args;
+    }
+
+    public function getControllerName(array $params): string
+    {
+        $controller = $params["controller"];
+
+        $controller = str_replace("-", "", ucwords(strtolower($controller), "-"));
+
+        $namespace = "App\Controllers";
+
+        return $namespace . "\\" . $controller;
     }
 }
