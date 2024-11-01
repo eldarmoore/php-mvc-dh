@@ -10,6 +10,10 @@ class Home
     {
         $viewer = new Viewer;
 
+        echo $viewer->render("shared/header.php", [
+            "title" => "Home",
+        ]);
+
         echo $viewer->render('Home/index.php');
     }
 }
