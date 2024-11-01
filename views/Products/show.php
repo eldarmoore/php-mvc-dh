@@ -8,7 +8,7 @@
 <body>
 
 <h1>Product Details</h1>
-<p>Details of the product will be shown here.</p>
+<p>Show the product with ID <?= $id ?></p>
 
 </body>
 </html>
