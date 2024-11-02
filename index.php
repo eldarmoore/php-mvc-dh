@@ -8,6 +8,8 @@ if ($show_errors) {
     ini_set('display_errors', '1');
 } else {
     ini_set('display_errors', '0');
+
+    require "views/500.php";
 }
 
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
