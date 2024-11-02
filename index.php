@@ -20,11 +20,11 @@ $router->add("/{controller}/{action}");
 
 $container = new Framework\Container;
 
-$container->set(App\Database::class, function () {
-
-    return new App\Database("localhost", "product_db", "product_db_user", "secret");
-
-});
+//$container->set(App\Database::class, function () {
+//
+//    return new App\Database("localhost", "product_db", "product_db_user", "secret");
+//
+//});
 
 $dispatcher = new Framework\Dispatcher($router, $container);
 
