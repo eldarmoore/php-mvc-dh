@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Framework;
 
+use Framework\Exceptions\PageNotFoundException;
 use ReflectionMethod;
 
 class Dispatcher
@@ -19,7 +20,9 @@ class Dispatcher
 
         // If no route matches, display a 404 message
         if ($params === false) {
-            exit("404 Not Found");
+
+            throw new PageNotFoundException("No route matched for '{$path}'");
+
         }
 
         // Get the controller and action from the matched route
