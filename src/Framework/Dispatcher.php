@@ -37,7 +37,7 @@ class Dispatcher
 
                 $type = (string) $parameter->getType();
 
-                $dependencies[] = new $type();
+                $dependencies[] = new $type;
             }
         }
 

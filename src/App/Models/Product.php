@@ -7,11 +7,14 @@ use PDO;
 
 class Product
 {
+    public function __construct(private Database $database)
+    {
+
+    }
+
     public function getData(): array
     {
-        $database = new Database();
-
-        $pdo = $database->getConnection();
+        $pdo = $this->database->getConnection();
 
         $stmt = $pdo->query("SELECT * FROM product");
 
