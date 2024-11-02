@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Framework;
 
 use Closure;
@@ -59,7 +61,7 @@ class Container
                 of type '$type' in the $class_name class");
             }
 
-            $dependencies[] = $this->get($type);
+            $dependencies[] = $this->get((string) $type);
         }
 
         // Require and instantiate the controller
