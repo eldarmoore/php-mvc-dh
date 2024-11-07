@@ -9,6 +9,8 @@ if ($show_errors) {
 } else {
     ini_set('display_errors', '0');
 
+    ini_set("log_errors", "1");
+
     require "views/500.php";
 }
 
