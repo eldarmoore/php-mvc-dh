@@ -31,9 +31,7 @@ class ErrorHandler
 
         }
 
-        $show_errors = false;
-
-        if ($show_errors) {
+        if ($_ENV["SHOW_ERRORS"]) {
             ini_set('display_errors', '1');
         } else {
             ini_set('display_errors', '0');
