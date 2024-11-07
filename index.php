@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-use Framework\Router;
-
 spl_autoload_register(function (string $class_name) {
     require "src/" . str_replace("\\", "/", $class_name) . ".php";
 });
@@ -20,17 +18,7 @@ if ($path === false) {
 
 }
 
-$router = new Router();
-
-// Add routes to the routing table
-$router->add("/admin/{controller}/{action}", ["namespace" => "Admin"]);
-$router->add("/{title}/{id:\d+}/{page:\d+}", ["controller" => "products", "action" => "showPage"]);
-$router->add("/product/{slug:[\w-]+}", ["controller" => "products", "action" => "show"]);
-$router->add("/{controller}/{id:\d+}/{action}");
-$router->add("/home/index", ["controller" => "home", "action" => "index"]);
-$router->add("/products", ["controller" => "products", "action" => "index"]);
-$router->add("/", ["controller" => "home", "action" => "index"]);
-$router->add("/{controller}/{action}");
+$router = require "config/routes.php";
 
 $container = new Framework\Container;
 
