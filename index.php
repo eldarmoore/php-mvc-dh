@@ -2,10 +2,13 @@
 
 declare(strict_types=1);
 
-set_error_handler(function (int $errno, string $errstr, string $errfile, int $errline): bool
-{
-    throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
+use Framework\Router;
+
+spl_autoload_register(function (string $class_name) {
+    require "src/" . str_replace("\\", "/", $class_name) . ".php";
 });
+
+set_error_handler("Framework\ErrorHandler::handleError");
 
 set_exception_handler(function (Throwable $exception) {
 
@@ -47,11 +50,7 @@ if ($path === false) {
 
 }
 
-spl_autoload_register(function (string $class_name) {
-    require "src/" . str_replace("\\", "/", $class_name) . ".php";
-});
-
-$router = new \Framework\Router();
+$router = new Router();
 
 // Add routes to the routing table
 $router->add("/admin/{controller}/{action}", ["namespace" => "Admin"]);
