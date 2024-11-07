@@ -6,6 +6,12 @@ spl_autoload_register(function (string $class_name) {
     require "src/" . str_replace("\\", "/", $class_name) . ".php";
 });
 
+$dotenv = new Framework\Dotenv;
+
+$dotenv->load(".env");
+
+print_r($_ENV);
+
 set_error_handler("Framework\ErrorHandler::handleError");
 
 set_exception_handler("Framework\ErrorHandler::handleException");
