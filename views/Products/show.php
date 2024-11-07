@@ -1,6 +1,6 @@
 
-<h1>Product Details</h1>
-<p>Show the product with ID <?= $id ?></p>
+<h1><?= $product["name"] ?></h1>
+<p><?= $product["description"] ?></p>
 
 </body>
 </html>
