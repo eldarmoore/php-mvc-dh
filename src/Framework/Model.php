@@ -62,14 +62,24 @@ abstract class Model
 
         $sql = "INSERT INTO {$this->getTable()} ($columns) VALUES ($placeholders)";
 
-        exit($sql);
-
         $conn = $this->database->getConnection();
 
         $stmt = $conn->prepare($sql);
 
-        $stmt->bindParam(1, $data["name"], PDO::PARAM_STR);
-        $stmt->bindParam(2, $data["description"], PDO::PARAM_STR);
+        $i = 1;
+
+        foreach ($data as $value) {
+
+            $type = match(gettype($value)) {
+                "boolean" => PDO::PARAM_BOOL,
+                "integer" => PDO::PARAM_INT,
+                "NULL" => PDO::PARAM_NULL,
+                default => PDO::PARAM_STR,
+            };
+
+            $stmt->bindValue($i++, $value, $type);
+
+        }
 
         return $stmt->execute();
     }
