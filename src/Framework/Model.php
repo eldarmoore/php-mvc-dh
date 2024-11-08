@@ -56,7 +56,13 @@ abstract class Model
 
     public function insert(array $data): bool
     {
-        $sql = "INSERT INTO product (name, description) VALUES (?, ?)";
+        $columns = implode(", ", array_keys($data));
+
+        $placeholders = implode(", ", array_fill(0, count($data), '?'));
+
+        $sql = "INSERT INTO {$this->getTable()} ($columns) VALUES ($placeholders)";
+
+        exit($sql);
 
         $conn = $this->database->getConnection();
 
