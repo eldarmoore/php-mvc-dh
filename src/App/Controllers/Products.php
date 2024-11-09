@@ -69,7 +69,8 @@ class Products
 
         if ($this->model->insert($data)) {
 
-             echo "Record created successfully, ID: ", $this->model->getInsertID();
+             header("Location: /products/{$this->model->getInsertID()}/show");
+             exit;
 
         } else {
             echo $this->viewer->render("shared/header.php", [
