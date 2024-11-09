@@ -34,6 +34,8 @@ class Dispatcher
 
         $controller_object = $this->container->get($controller);
 
+        $controller_object->setRequest($request);
+
         $args = $this->getActionArguments($controller, $action, $params);
 
         // Call the action method on the controller object
