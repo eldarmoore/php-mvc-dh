@@ -30,4 +30,4 @@ $container = $controller = require ROOT_PATH . "/config/services.php";
 
 $dispatcher = new Framework\Dispatcher($router, $container);
 
-$dispatcher->handle($path);
+$dispatcher->handle($path, $_SERVER["REQUEST_METHOD"]);

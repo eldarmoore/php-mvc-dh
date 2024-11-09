@@ -13,15 +13,15 @@ class Dispatcher
     {
     }
 
-    public function handle(string $path)
+    public function handle(string $path, string $method)
     {
         // Match the current path to a route
-        $params = $this->router->match($path);
+        $params = $this->router->match($path, $method);
 
         // If no route matches, display a 404 message
         if ($params === false) {
 
-            throw new PageNotFoundException("No route matched for '{$path}'");
+            throw new PageNotFoundException("No route matched for '{$path}' with method '{$method}'");
 
         }
 
