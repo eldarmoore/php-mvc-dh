@@ -13,7 +13,7 @@ class Dispatcher
     {
     }
 
-    public function handle(string $path, string $method)
+    public function handle(Request $request)
     {
         // Match the current path to a route
         $params = $this->router->match($path, $method);
