@@ -17,6 +17,13 @@ abstract class Model
     {
     }
 
+    public function getInsertID(): string
+    {
+        $conn = $this->database->getConnection();
+
+        return $conn->lastInsertId();
+    }
+
     protected function addError(string $field, string $message): void
     {
         $this->errors[$field] = $message;
