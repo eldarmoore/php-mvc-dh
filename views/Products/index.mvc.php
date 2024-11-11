@@ -17,7 +17,7 @@
 
         <h2>
             <a href="/products/{{ product["id"] }}/show">
-                {{ product["name"]) }}
+                {{ product["name"] }}
             </a>
         </h2>
 

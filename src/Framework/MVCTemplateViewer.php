@@ -12,15 +12,13 @@ class MVCTemplateViewer implements TemplateViewerInterface
 
         $code = $this->replaceVariables($code);
 
-        return $code;
+        extract($data, EXTR_SKIP);
 
-//        extract($data, EXTR_SKIP);
-//
-//        ob_start();
-//
-//        require dirname(__DIR__, 2) . "/views/$template";
-//
-//        return ob_get_clean();
+        ob_start();
+
+        eval("?>$code");
+
+        return ob_get_clean();
     }
 
     private function replaceVariables(string $code): string
